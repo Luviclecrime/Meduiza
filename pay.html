@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumettre ID de Transaction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bcdb0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+        .submit-button {
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Entrer ID de la Transaction</div>
+        <input type="text" class="form-control input-field" placeholder="Veuillez entrer l'ID de la transaction" id="transaction-id">
+        <button class="btn btn-primary submit-button btn-block" onclick="submitTransaction()">Soumettre</button>
+    </div>
+
+    <script>
+        function submitTransaction() {
+            const transactionId = document.getElementById('transaction-id').value;
+            if (transactionId) {
+                alert("erreur veiller entrer le bon id de la transaction");
+                // Ajoutez ici la logique pour traiter l'ID de transaction.
+            } else {
+                alert("Veuillez entrer un ID de transaction valide.");
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

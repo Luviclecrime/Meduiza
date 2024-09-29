@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #2E7D32; /* Vert pour correspondre au thème */
+            color: #fff;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .account-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .balance {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2E7D32; /* Texte en vert */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .ci {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Vert pour les boutons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .ci:hover {
+            background-color: #388E3C;
+        }
+
+        .logout {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            background-color: #2E7D32; /* Footer vert */
+            color: #fff;
+        }
+
+        .footer-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .client-service {
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+        }
+
+        .client-service img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        /* Styles pour les messages */
+        .message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #2E7D32;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header, .user-info, .account-info, .buttons, .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .balance {
+                width: 100%;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-item {
+                margin-bottom: 10px;
+            }
+
+            .client-service {
+                bottom: 30px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span>😊</span>
+            <span class="url">TABLEAU DE REFERENCE</span>
+        </div>
+        <div class="user-info">
+            <div class="phone">Phone Number</div>
+            <div class="code">6********</div>
+        </div>
+        <div class="account-info">
+            <div class="balance">
+                <div class="balance-label">Revenus du premier dépôt</div>
+                <div class="balance-amount">XAF0.00</div>
+            </div>
+            <div class="balance">
+                <div class="balance-label">Revenu du projet</div>
+                <div class="balance-amount">XAF0.00</div>
+            </div>
+            <div class="balance">
+                <div class="balance-label">Revenus des Inviter</div>
+                <div class="balance-amount">XAF0.00</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button" class="ci" id="retraitBtn">Journal de retrait</button>
+            <button type="button" class="ci" id="rechargeBtn">Journal de recharge</button>
+        </div>
+        <a href="inscription.html"><button class="logout">Se déconnecter</button></a>
+
+        <!-- Sections pour les messages -->
+        <div class="message" id="retraitMessage">Aucun retrait effectuer dès la création du compte.</div>
+        <div class="message" id="rechargeMessage">Aucune recharge effectuer.</div>
+
+        <div class="footer">
+            <div class="footer-item">M E D U S A </div>
+            <div class="footer-item">A S S U R A N C E</div>
+            <div class="footer-item">R I C H E S S E</div>
+            <div class="footer-item">L U X E</div>
+        </div>
+    </div>
+
+    <!-- Bouton Service Client avec une image -->
+    <div class="client-service">
+        <a href="https://t.me/Lary_Service">
+            <img src="logo.jpg" alt="Service Client">
+        </a>
+        client
+    </div>
+
+    <script>
+        // Récupérer les éléments des boutons et des messages
+        const retraitBtn = document.getElementById('retraitBtn');
+        const rechargeBtn = document.getElementById('rechargeBtn');
+        const retraitMessage = document.getElementById('retraitMessage');
+        const rechargeMessage = document.getElementById('rechargeMessage');
+
+        // Ajouter les événements de clic sur les boutons
+        retraitBtn.addEventListener('click', function() {
+            rechargeMessage.style.display = 'none'; // Cacher l'autre message
+            retraitMessage.style.display = 'block'; // Afficher le message de retrait
+        });
+
+        rechargeBtn.addEventListener('click', function() {
+            retraitMessage.style.display = 'none'; // Cacher l'autre message
+            rechargeMessage.style.display = 'block'; // Afficher le message de recharge
+        });
+    </script>
+</body>
+</html>

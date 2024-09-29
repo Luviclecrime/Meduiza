@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement d'Activation - MEDUZA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bcdb0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(14, 190, 73);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .subtitle {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        .pay-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .pay-button:hover {
+            background-color: #0056b3;
+        }
+        .copy-button {
+            margin-top: 10px;
+            background-color: #ffc107;
+            color: white;
+        }
+        .copy-button:hover {
+            background-color: #e0a800;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo mb-3">
+            <img src="logo.jpg" alt="-MEDUZA Logo" class="img-fluid" style="max-width: 100px;">
+        </div>
+        <div class="title">PAIEMENT D'ACTIVATION</div>
+        <input type="text" class="form-control mb-2" value="MTN (MARIE CLAIR)" readonly>
+        <input type="text" class="form-control mb-2" id="mtn-number" value="679298643" readonly>
+        <a href="pay.html"><button class="pay-button btn btn-primary btn-block">Pay Now</button></a>
+        <button class="copy-button btn btn-warning btn-block" onclick="copyToClipboard('mtn-number')">Copier Numéro MTN</button>
+        
+        <div class="subtitle">Une fois le paiement effectué, vous entrerez l'ID de votre transaction et serez dirigé vers la page d'accueil de la plateforme.</div>
+        
+        <div class="subtitle">Entrez votre code PIN pour finaliser le paiement</div>
+        
+        <input type="text" class="form-control mb-2" value="ORANGE (Carole Matango)" readonly>
+        <input type="text" class="form-control mb-2" id="orange-number" value="686858828" readonly>
+        <button class="copy-button btn btn-warning btn-block" onclick="copyToClipboard('orange-number')">Copier Numéro Orange</button>
+        
+        <div class="footer">
+            <p><a href="#">Conditions d'utilisation</a></p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const inputElement = document.getElementById(elementId);
+            inputElement.select();
+            document.execCommand('copy');
+            alert('Numéro copié : ' + inputElement.value);
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

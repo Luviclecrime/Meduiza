@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement d'Activation - MEDUZA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bcdb0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(59, 154, 192);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+        .pay-button {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .pay-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+        .footer a {
+            color: #ffc107;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .alert {
+            display: none; /* Cacher l'alerte par défaut */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.jpg" alt="-MEDUZA Logo" class="img-fluid" style="max-width: 100px;">
+        </div>
+        <div class="title">RETRAIT</div>
+        <input type="text" placeholder="Entrez le montant" class="form-control input-field" id="amount">
+        <input type="number" placeholder="Numéro du bénéficiaire" class="form-control input-field" id="beneficiary-number">
+        <button type="button" class="btn btn-primary pay-button btn-block" onclick="verifyBalance()">Retrait</button>
+        
+        <div class="alert alert-danger mt-3" id="error-message">Votre solde est insuffisant.</div>
+        
+        <div class="footer">
+            <p><a href="#">Conditions d'utilisation</a></p>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Exemple de solde utilisateur
+        const userBalance = 100; // Montant en unité monétaire
+
+        function verifyBalance() {
+            const amountInput = document.getElementById('amount');
+            const amount = parseFloat(amountInput.value);
+            const errorMessage = document.getElementById('error-message');
+
+            // Cacher le message d'erreur par défaut
+            errorMessage.style.display = 'none';
+
+            // Vérifier si le montant est supérieur au solde
+            if (amount > userBalance) {
+                errorMessage.style.display = 'block'; // Afficher le message d'erreur
+            } else {
+                // Logique de retrait ici (rediriger ou traiter le retrait)
+                alert('Retrait effectué avec succès !'); // Exemple d'action réussie
+            }
+        }
+    </script>
+</body>
+</html>

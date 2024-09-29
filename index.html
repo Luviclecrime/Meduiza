@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="investi.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDUSA</title>
+<style>
+form {
+    background-color: rgb(16, 224, 33);
+    border-radius: 20px;
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 500px;
+}
+body {
+    background-color: rgb(13, 112, 54);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.ce, .ci {
+    color: white;
+    background-color: rgb(75, 120, 148);
+    border-radius: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: calc(100% - 40px);
+}
+.ce:hover {
+    color: aquamarine;
+}
+input {
+    width: calc(100% - 22px);
+    margin: 10px auto;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px #fff solid;
+}
+h1, h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: large;
+}
+h4 {
+    font-size: medium;
+    margin: 0 20px;
+}
+@media only screen and (max-width: 600px) {
+    form {
+        margin: 20px;
+        padding: 20px;
+    }
+    input {
+        font-size: 16px;
+    }
+    .ce, .ci {
+        padding: 10px;
+        margin: 5px;
+    }
+    h1, h4 {
+        font-size: medium;
+    }
+}
+</style>
+<script src="save.js"></script>
+</head>
+<body>
+ <h1><marquee behavior="" direction=""><u>BIENVENUE CHEZ MEDUSA</u></marquee></h1> <br>
+ <center>
+        <form action="">
+            <input type="text" placeholder="Votre nom" class="input" id="1"><br>
+            <input type="text" placeholder="Votre prénom" class="input" id="2"><br>
+            <input type="password" placeholder="Votre mot de passe" class="input" id="3"><br>
+            <input type="password" placeholder="Répétez votre mot de passe" class="input" id="4"><br>
+            <input type="number" placeholder="+237" class="input" id="area"><br>
+            <button type="button" class="ce" onclick="verification()">S'inscrire</button><br>
+            <a href="connexion.html"><button type="button" class="ci">Se connecter</button></a>
+        </form>
+ </center>
+ <h4>Bienvenue sur notre site d'investissement en ligne</h4><br>
+ <h4>apres avoir effectuer votre depot vous recevez automatiquement un bonus de 5000f a retirer a tout moment et vous pouvez retirer Votre investissement a tout moment
+ </h4><br>
+ <h4>les pourcentages de parainage sont de 40%.</h4>
+
+ <script>
+function verification(){
+    var nom = document.getElementById("1").value;
+    var prenom = document.getElementById("2").value;
+    var mots = document.getElementById("3").value;
+    var mot = document.getElementById("4").value;
+    var adresse = document.getElementById("area").value;
+
+    if(nom == ""){
+        alert('Veuillez remplir le champ nom');
+        return;
+    }
+    if(prenom == ""){
+        alert('Veuillez remplir le champ prénom');
+        return;
+    }
+    if(mots == ""){
+        alert('Veuillez remplir le champ mot de passe');
+        return;
+    }
+    if(mots.length < 6){
+        alert('Le mot de passe doit avoir au moins 6 caractères');
+        return;
+    }
+    if(mots !== mot){
+        alert('Les mots de passe ne correspondent pas');
+        return;
+    }
+    if(adresse == ""){
+        alert('Veuillez remplir le champ adresse email');
+        return;
+    }
+
+    alert('Inscription réussie');
+}
+ </script>
+</body>
+</html>
