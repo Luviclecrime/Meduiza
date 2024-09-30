@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gestion des Transactions</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		body {
+			background-color: #e8f5e9;
+		}
+		.container-custom {
+			margin-top: 50px;
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 20px;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+		}
+		.header, .footer {
+			text-align: left;
+			margin-bottom: 20px;
+		}
+		.retrait {
+			border-left: 5px solid #2e7d32;
+			padding-left: 20px;
+			background-color: #c8e6c9;
+			color: #1b5e20;
+		}
+		.depot {
+			border-left: 5px solid #43a047;
+			padding-left: 20px;
+			background-color: #a5d6a7;
+			color: #2e7d32;
+		}
+		.button-custom {
+			width: 100%;
+			margin-top: 10px;
+			background-color: #388e3c;
+			color: white;
+		}
+		.footer img {
+			width: 70px;
+			border-radius: 50%;
+		}
+		.marquee {
+			color: #388e3c;
+			font-weight: bold;
+		}
+		.input-group-text-custom {
+			background-color: #43a047;
+			color: white;
+		}
+		.row-custom {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="container-custom">
+			<div class="header">
+				<h1 class="text-success">Gestion des Transactions</h1>
+			</div>
+
+			<!-- Solde et Retrait -->
+			<div class="row-custom mb-4">
+				<div class="mb-3">
+					<label for="solde" class="form-label">Solde du compte</label>
+					<div class="input-group">
+						<span class="input-group-text input-group-text-custom">XAF</span>
+						<input type="text" id="solde" class="form-control" disabled>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="retrait-numero" class="form-label">Numéro de retrait</label>
+					<input type="number" id="retrait-numero" class="form-control" placeholder="Entrez votre numéro">
+				</div>
+			</div>
+			
+			<div class="row-custom mb-4">
+				<div class="mb-3">
+					<label for="retrait-montant" class="form-label">Montant du retrait</label>
+					<input type="number" id="retrait-montant" class="form-control" placeholder="Entrez le montant">
+				</div>
+				<div class="d-grid">
+					<button id="retirer-btn" class="btn button-custom">Retirer</button>
+				</div>
+			</div>
+			<p id="message-retrait" class="text-center mt-3"></p>
+
+			<!-- Section Retrait -->
+			<div class="retrait p-3 mb-4">
+				<h3 class="text-center">Informations Retrait</h3>
+				<ol>
+					<li>Le retrait minimal est de 100 XAF.</li>
+					<li>Les retraits se font du lundi au vendredi.</li>
+					<li>Pas de frais de retrait.</li>
+					<li>Les retraits se font entre 9h et 19h30.</li>
+					<li>Vos gains arrivent dans vos comptes dans les 3h qui suivent.</li>
+				</ol>
+			</div>
+
+			<!-- Section Dépôt -->
+			<div class="depot p-3 mb-4">
+				<h3 class="text-center">Informations Dépôt</h3>
+				<ol>
+					<li>Le dépôt minimum est de 10000 XAF.</li>
+					<li>Les dépôts se font aux mêmes heures que les retraits.</li>
+				</ol>
+			</div>
+
+			<!-- Bouton Dépôt -->
+			<div class="text-center">
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('solde').value = '0 XAF';
+
+			// Générer un identifiant utilisateur unique et l'utiliser pour le lien de parrainage
+			var userId = Math.floor(Math.random() * 100000); 
+			var parrainageLink = "https://promtal.netlify.app/index.html?ref=" + userId;
+			document.getElementById('parainage').value = parrainageLink;
+
+			document.getElementById('copiel').addEventListener('click', function() {
+				var copyText = document.getElementById('parainage');
+				copyText.disabled = false;
+				copyText.select();
+				document.execCommand('copy');
+				copyText.disabled = true;
+				alert("Lien de parrainage copié!");
+			});
+
+			document.getElementById('retirer-btn').addEventListener('click', function() {
+				var soldeElement = document.getElementById('solde');
+				var montantRetrait = parseInt(document.getElementById('retrait-montant').value);
+				var soldeActuel = parseInt(soldeElement.value.replace('XAF', '').trim());
+				var messageRetrait = document.getElementById('message-retrait');
+
+				if (montantRetrait < 100) {
+					messageRetrait.textContent = "Erreur : Le retrait minimal est de 100 XAF.";
+					messageRetrait.style.color = "red";
+				} else if (montantRetrait > soldeActuel) {
+					messageRetrait.textContent = "Erreur : Solde insuffisant pour ce retrait.";
+					messageRetrait.style.color = "red";
+				} else {
+					soldeElement.value = (soldeActuel - montantRetrait) + " XAF";
+					messageRetrait.textContent = "Retrait de " + montantRetrait + " XAF en cours.";
+					messageRetrait.style.color = "green";
+				}
+			});
+		});
+	</script>
+</body>
+</html>
